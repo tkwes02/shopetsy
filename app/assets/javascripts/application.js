@@ -13,4 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
+
+
+   
+
+var colors = ['#FFCCCC', '#FF9966', '#99DDFF']; // Define Your colors here, can be html name of color, hex, rgb or anything what You can use in CSS
+var active = 0;
+setInterval(function(){
+    document.querySelector('.container').style.background = colors[active];
+    active++;
+    if (active == colors.length) active = 0;
+}, 30000);

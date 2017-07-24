@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  resources :listings
-  root 'pages#home'
+  resources :orders
+  devise_for :users
   
+  
+    resources :listings do
+        
+      resources :orders, only: [:new, :create]
+    end
+    
+    root 'pages#home'
+  
+    get 'seller' => 'listings#seller'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

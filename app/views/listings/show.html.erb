@@ -18,10 +18,17 @@
          <%= number_to_currency(@listing.price) %>
       </p>
       <p><h5>
-  <%= @listing.descrition %>
+  <%= @listing.description %>
    </h5>
    </p>
-  <br><br>
+  <br>
+     <div class="center">
+      <%= link_to "Buy it now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true  } %>
+    </div>
+  
+  
+  
+  <br>
   <% if current_user == @listing.user %>
 <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> | 
 <% end %>
