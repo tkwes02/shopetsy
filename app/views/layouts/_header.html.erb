@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header navbar-brand">
+   
+   <%= link_to 'Etsyshop', root_path %>
+    </div>
+
+      <ul class="nav navbar-nav navbar-right">
+          
+     
+        
+        
+        <% if user_signed_in? %>
+     <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  Hi, <%= current_user.name %>!  <span class="caret"></span></a>
+            <ul class="dropdown-menu">         
+            
+            <li><%= link_to "Manage Listing", seller_path %></li>
+                <li><%= link_to 'Create Listing', new_listing_path %></li>
+                <li><%= link_to 'View Listings', listings_path %></a></li>
+              
+              </ul>
+
+        
+        </li>
+       
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+ 
+           <li>  <%= button_to "Sign Out", destroy_user_session_path, :method => "delete", :class => "btn btn-danger navbar-btn" %>
+           </li>
+           
+       
+        
+            
+    <% else %>
+
+  <li><%= link_to "Register", new_user_registration_path %></li>
+        
+        
+          <li>
+     <%= button_to "Sign In" , new_user_session_path, :method => "get", :class => "btn btn-default navbar-btn" %>      
+      </li>
+        
+ 
+    <% end %>
+    
+      </ul>
+    
+  </div>
+</nav>
