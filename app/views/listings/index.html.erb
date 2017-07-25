@@ -4,11 +4,9 @@
   <div class="col-md-10 col-md-offset-1">
 <div align="center">
  <% if user_signed_in? %>
-   <button type="button" class="btn btn-default btn-sm">
-      
-<%= link_to 'Create a Listing', new_listing_path %>
-
-      </button> <% end %>
+        
+<%= link_to 'Create Listing', new_listing_path, class: "btn btn-primary navbar-btn" %>
+<% end %>
       
 </div>
 <p></p>

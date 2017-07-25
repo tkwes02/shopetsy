@@ -32,6 +32,7 @@ th {
     font-weight: 400;
     color: #d5641c;
     font-size: 30px;
+     display: inline-block;
 }
 .navbar-default .navbar-nav > li > a {
      font-famiy: guardian-egyptt, georgia, serif;
@@ -39,6 +40,13 @@ th {
     font-weight: bold;
     color: #0192b5;
     
+}
+h3 {
+    text-align: center;
+}
+
+td {
+    text-align: center;
 }
 
 .col-md-3:nth-child(4n+1){

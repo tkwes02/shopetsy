@@ -4,11 +4,11 @@
     
     <tr>
         
-        <th >Image</th>
-        <th >Name</th>
-        <th >Description</th>
-        <th >Price</th>
-        <th >Action</th>
+    <th class="center">Image</th>
+    <th class="center">Name</th>
+    <th class="center">Description</th>
+    <th class="center">Price</th>
+    <th class="center">Action</th>
     </tr>
     
      <% @listings.each do |listing| %>
@@ -55,10 +55,7 @@
      <% end %>
     
 </table>
-
- <button type="button" class="btn btn-default btn-sm">
       
-<%= link_to 'Create a Listing', new_listing_path %>
+<%= link_to 'Create Listing', new_listing_path, class: "btn btn-primary navbar-btn" %>
 
-      </button>
 </div>
