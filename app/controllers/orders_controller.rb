@@ -26,29 +26,35 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-     @order.buyer_id = current_user.id
-     @listing = Listing.find(params[:listing_id])
-     
-    @order.listing_id = @listing.id
-    @seller = @listing.user
-    @order.seller_id = @seller.id
+         Stripe.api_key = ENV["STRIPE_API_KEY"]
+       token = params[:stripeToken]
+       
+        @order = Order.new(order_params)
+        @listing = Listing.find(params[:listing_id])
+        @seller = @listing.user
+    
+        @order.listing_id = @listing.id
+        @order.buyer_id = current_user.id
+        @order.seller_id = @seller.id
         
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
-    token = params[:stripeToken]
+        begin
+       
         
-    begin
-      charge = Stripe::Charge.create(
-        :amount => (@listing.price * 100).floor,
-        :currency => "usd",
-        :card => token
-        )
-      flash[:notice] = "Thanks for ordering!"
-    rescue Stripe::CardError => e
-      flash[:danger] = e.message
-    end
-
- 
+          charge = Stripe::Charge.create(
+            :amount => (@listing.price * 100).floor,
+            :currency => "usd", 
+            :source => token,
+            :destination =>  @seller.recipient
+            
+          )
+        
+        flash[:notice] = "Thanks for ordering!"
+        
+        rescue Stripe::CardError => e
+          flash[:danger] = e.message
+          
+       end
+    
     
     respond_to do |format|
       if @order.save

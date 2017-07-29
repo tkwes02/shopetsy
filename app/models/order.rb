@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
     
-  validates_presence_of :address, :city, :state
+  validates_presence_of :address, :city, :state, presence: true
 
   belongs_to :listing
   belongs_to :buyer, class_name: "User"
