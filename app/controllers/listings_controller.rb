@@ -43,10 +43,12 @@ class ListingsController < ApplicationController
     @listing.user_id = current_user.id
 
    
-      Stripe.api_key = ENV["STRIPE_API_KEY"]
-      token = params[:stripeToken]
+     
       
   if current_user.recipient.blank?
+     Stripe.api_key = ENV["STRIPE_API_KEY"]
+      token = params[:stripeToken]
+      
       recipient = Stripe::Account.create(
     
         :country => 'US',
