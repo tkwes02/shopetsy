@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
             :amount => (@listing.price * 100).floor,
             :currency => "usd", 
             :source => token,
-            :destination =>  @seller.recipient
+            :destination =>  @order.seller.recipient
             
           )
         
